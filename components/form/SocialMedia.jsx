@@ -1,9 +1,24 @@
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
 import { ResumeContext } from "../../pages/builder";
+import { useLanguage } from '../../context/LanguageContext';
 
 const SocialMedia = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
+  const { language } = useLanguage();
+
+  const titles = {
+    en: {
+      title: 'Social Media',
+      socialMedia: 'Social Media',
+      link: 'Link'
+    },
+    pt: {
+      title: 'Redes Sociais',
+      socialMedia: 'Rede Social',
+      link: 'Link'
+    }
+  };
 
   // social media
   const handleSocialMedia = (e, index) => {
@@ -24,30 +39,29 @@ const SocialMedia = () => {
 
   const removeSocialMedia = (index) => {
     const newSocialMedia = [...resumeData.socialMedia];
-    newSocialMedia[index] = newSocialMedia[newSocialMedia.length - 1];
-    newSocialMedia.pop();
+    newSocialMedia.splice(index, 1);
     setResumeData({ ...resumeData, socialMedia: newSocialMedia });
   };
 
   return (
     <div className="flex-col-gap-2">
-      <h2 className="input-title">Social Media</h2>
-      {resumeData.socialMedia.map((socialMedia, index) => (
-        <div key={index} className="flex-wrap-gap-2">
+      <h2 className="input-title">{titles[language].title}</h2>
+      {resumeData.socialMedia.map((social, index) => (
+        <div key={index} className="f-col">
           <input
             type="text"
-            placeholder="Social Media"
+            placeholder={titles[language].socialMedia}
             name="socialMedia"
-            className="other-input"
-            value={socialMedia.socialMedia}
+            className="w-full other-input"
+            value={social.socialMedia}
             onChange={(e) => handleSocialMedia(e, index)}
           />
           <input
             type="text"
-            placeholder="Link"
+            placeholder={titles[language].link}
             name="link"
-            className="other-input"
-            value={socialMedia.link}
+            className="w-full other-input"
+            value={social.link}
             onChange={(e) => handleSocialMedia(e, index)}
           />
         </div>
@@ -55,7 +69,7 @@ const SocialMedia = () => {
       <FormButton
         size={resumeData.socialMedia.length}
         add={addSocialMedia}
-        remove={removeSocialMedia}
+        remove={() => removeSocialMedia(resumeData.socialMedia.length - 1)}
       />
     </div>
   );

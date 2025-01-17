@@ -1,16 +1,40 @@
 import React, { useContext } from "react";
 import { ResumeContext } from "../../pages/builder";
-const PersonalInformation = ({}) => {
+import { useLanguage } from "../../context/LanguageContext";
+
+const PersonalInformation = () => {
   const { resumeData, setResumeData, handleProfilePicture, handleChange } =
     useContext(ResumeContext);
+  const { language } = useLanguage();
+
+  const titles = {
+    en: {
+      title: "Personal Information",
+      name: "Full Name",
+      position: "Job Title",
+      contact: "Contact Information",
+      email: "Email",
+      address: "Address",
+      profilePicture: "Profile Picture"
+    },
+    pt: {
+      title: "Informações Pessoais",
+      name: "Nome Completo",
+      position: "Título do Trabalho",
+      contact: "Informações de Contato",
+      email: "Email",
+      address: "Endereço",
+      profilePicture: "Foto de Perfil"
+    }
+  };
 
   return (
     <div className="flex-col-gap-2">
-      <h2 className="input-title">Personal Information</h2>
+      <h2 className="input-title">{titles[language].title}</h2>
       <div className="grid-4">
         <input
           type="text"
-          placeholder="Full Name"
+          placeholder={titles[language].name}
           name="name"
           className="pi"
           value={resumeData.name}
@@ -18,7 +42,7 @@ const PersonalInformation = ({}) => {
         />
         <input
           type="text"
-          placeholder="Job Title"
+          placeholder={titles[language].position}
           name="position"
           className="pi"
           value={resumeData.position}
@@ -26,7 +50,7 @@ const PersonalInformation = ({}) => {
         />
         <input
           type="text"
-          placeholder="Contact Information"
+          placeholder={titles[language].contact}
           name="contactInformation"
           className="pi"
           value={resumeData.contactInformation}
@@ -36,7 +60,7 @@ const PersonalInformation = ({}) => {
         />
         <input
           type="email"
-          placeholder="Email"
+          placeholder={titles[language].email}
           name="email"
           className="pi"
           value={resumeData.email}
@@ -44,7 +68,7 @@ const PersonalInformation = ({}) => {
         />
         <input
           type="text"
-          placeholder="Address"
+          placeholder={titles[language].address}
           name="address"
           className="pi"
           value={resumeData.address}
@@ -56,7 +80,7 @@ const PersonalInformation = ({}) => {
           accept="image/*"
           className="profileInput"
           onChange={handleProfilePicture}
-          placeholder="Profile Picture"
+          placeholder={titles[language].profilePicture}
         />
       </div>
     </div>

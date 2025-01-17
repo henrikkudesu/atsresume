@@ -5,7 +5,14 @@ import {
   FaTwitter,
   FaFacebook,
   FaInstagram,
-  FaYoutube, FaBold, FaItalic, FaPlus, FaMinus, FaAlignLeft , FaAlignCenter, FaAlignRight,
+  FaYoutube,
+  FaBold,
+  FaItalic,
+  FaPlus,
+  FaMinus,
+  FaAlignLeft,
+  FaAlignCenter,
+  FaAlignRight,
   FaUnderline,
 } from "react-icons/fa";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
@@ -22,6 +29,9 @@ import Language from "./Language";
 import Certification from "./Certification";
 import { HighlightMenu } from "react-highlight-menu";
 import useKeyboardShortcut from "../../hooks/useKeyboardShortcut";
+
+// [ADICIONADO] Import para tradução
+import { useLanguage } from "../../context/LanguageContext";
 
 const DragDropContext = dynamic(
   () =>
@@ -57,6 +67,29 @@ const Preview = () => {
     { name: "youtube", icon: <FaYoutube /> },
     { name: "website", icon: <CgWebsite /> },
   ];
+
+  // [ADICIONADO] Obter idioma atual
+  const { language } = useLanguage();
+
+  // [ADICIONADO] Títulos traduzidos
+  const titles = {
+    en: {
+      summary: "Summary",
+      education: "Education",
+      workExperience: "Work Experience",
+      projects: "Projects",
+      languages: "Languages",
+      certifications: "Certifications"
+    },
+    pt: {
+      summary: "Resumo",
+      education: "Educação",
+      workExperience: "Experiência Profissional",
+      projects: "Projetos",
+      languages: "Idiomas",
+      certifications: "Certificações"
+    }
+  };
 
   const onDragEnd = (result) => {
     const { destination, source } = result;
@@ -115,8 +148,8 @@ const Preview = () => {
   };
 
   const MenuButton = ({ title, icon, onClick }) => (
-    <button 
-      onClick={onClick} 
+    <button
+      onClick={onClick}
       title={title}
       className="p-2 hover:bg-gray-200 rounded font-semibold"
     >
@@ -127,16 +160,16 @@ const Preview = () => {
   const formatText = (command, value = null) => {
     document.execCommand(command, false, value);
   };
-  
-  const toggleBold = () => formatText('bold');
-  const toggleItalic = () => formatText('italic');
-  const toggleUnderline = () => formatText('underline');
-  const changeFontSize = (size) => formatText('fontSize', size);
+
+  const toggleBold = () => formatText("bold");
+  const toggleItalic = () => formatText("italic");
+  const toggleUnderline = () => formatText("underline");
+  const changeFontSize = (size) => formatText("fontSize", size);
   const alignText = (alignment) => formatText(`justify${alignment}`);
 
-  useKeyboardShortcut('b', true, toggleBold);
-  useKeyboardShortcut('i', true, toggleItalic);
-  useKeyboardShortcut('u', true, toggleUnderline);
+  useKeyboardShortcut("b", true, toggleBold);
+  useKeyboardShortcut("i", true, toggleItalic);
+  useKeyboardShortcut("u", true, toggleUnderline);
 
   return (
     <div className="md:max-w-[60%] sticky top-0 preview rm-padding-print p-6 md:overflow-y-scroll md:h-screen">
@@ -153,47 +186,42 @@ const Preview = () => {
           target="body"
           menu={() => (
             <>
+              <MenuButton title="Bold (Ctrl+B)" icon={<FaBold />} onClick={toggleBold} />
               <MenuButton
-        title="Bold (Ctrl+B)"
-        icon={<FaBold />}
-        onClick={toggleBold}
-      />
-      <MenuButton 
-        title="Italic (Ctrl+I)"
-        icon={<FaItalic />}
-        onClick={toggleItalic}
-      />
-      <MenuButton
-        title="Underline (Ctrl+U)"
-        icon={<FaUnderline />}
-        onClick={toggleUnderline}
-      />
-      <MenuButton
-        title="Increase Font Size"
-        icon={<FaPlus/>}
-        onClick={() => changeFontSize(4)} 
-      />
-      <MenuButton
-        title="Decrease Font Size"
-        icon={<FaMinus/>}
-        onClick={() => changeFontSize(2)} 
-      />
-
-      <MenuButton
-        title="Align Left"
-        icon={<FaAlignLeft/>}
-        onClick={() => alignText('Left')}
-      />
-      <MenuButton
-        title="Align Center"
-        icon={<FaAlignCenter/>}
-        onClick={() => alignText('Center')}
-      />
-      <MenuButton
-        title="Align Right"
-        icon={<FaAlignRight/>}
-        onClick={() => alignText('Right')}
-      />
+                title="Italic (Ctrl+I)"
+                icon={<FaItalic />}
+                onClick={toggleItalic}
+              />
+              <MenuButton
+                title="Underline (Ctrl+U)"
+                icon={<FaUnderline />}
+                onClick={toggleUnderline}
+              />
+              <MenuButton
+                title="Increase Font Size"
+                icon={<FaPlus />}
+                onClick={() => changeFontSize(4)}
+              />
+              <MenuButton
+                title="Decrease Font Size"
+                icon={<FaMinus />}
+                onClick={() => changeFontSize(2)}
+              />
+              <MenuButton
+                title="Align Left"
+                icon={<FaAlignLeft />}
+                onClick={() => alignText("Left")}
+              />
+              <MenuButton
+                title="Align Center"
+                icon={<FaAlignCenter />}
+                onClick={() => alignText("Center")}
+              />
+              <MenuButton
+                title="Align Right"
+                icon={<FaAlignRight />}
+                onClick={() => alignText("Right")}
+              />
             </>
           )}
         />
@@ -233,10 +261,6 @@ const Preview = () => {
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-1 social-media align-center justify-center "
-                    // Prevent text overflowing, If the socialMedia.link string is longer than 32 characters, apply the wordWrap and display styles to this <a> tag.
-                    // wordWrap: "break-word" breaks the text onto the next line if it's too long,
-                    // display: "inline-block" is necessary for wordWrap to work on an inline element like <a>.
-                    
                   >
                     {icons.map((icon, index) => {
                       if (icon.name === socialMedia.socialMedia.toLowerCase()) {
@@ -256,7 +280,7 @@ const Preview = () => {
               {resumeData.summary.length > 0 && (
                 <div className="mb-1">
                   <h2 className="section-title mb-1 border-b-2 border-gray-300">
-                    Summary
+                    {titles[language].summary}
                   </h2>
                   <p className="content break-words">{resumeData.summary}</p>
                 </div>
@@ -265,7 +289,7 @@ const Preview = () => {
                 {resumeData.education.length > 0 && (
                   <div className="mb-1">
                     <h2 className="section-title mb-1 border-b-2 border-gray-300">
-                      Education
+                      {titles[language].education}
                     </h2>
                     {resumeData.education.map((item, index) => (
                       <div key={index} className="mb-1">
@@ -309,13 +333,13 @@ const Preview = () => {
                   </div>
                 )}
               </Droppable>
-              <Language title="Languages" languages={resumeData.languages} />
+              <Language title={titles[language].languages} languages={resumeData.languages} />
               <Certification
-                title="Certifications"
+                title={titles[language].certifications}
                 certifications={resumeData.certifications}
               />
             </div>
-            
+
             <div className="col-span-2 space-y-2">
               {resumeData.workExperience.length > 0 && (
                 <Droppable droppableId="work-experience" type="WORK_EXPERIENCE">
@@ -326,7 +350,7 @@ const Preview = () => {
                         contentEditable
                         suppressContentEditableWarning
                       >
-                        Work Experience
+                        {titles[language].workExperience}
                       </h2>
                       {resumeData.workExperience.map((item, index) => (
                         <Draggable
@@ -381,11 +405,11 @@ const Preview = () => {
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}
                                                 className={`
-                                          hover:outline-dashed hover:outline-2 hover:outline-gray-400
-                                          ${
-                                            snapshot.isDragging &&
-                                            "outline-dashed outline-2 outline-gray-400 bg-white"
-                                          }`}
+                                                  hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                                  ${
+                                                    snapshot.isDragging &&
+                                                    "outline-dashed outline-2 outline-gray-400 bg-white"
+                                                  }`}
                                               >
                                                 <div
                                                   dangerouslySetInnerHTML={{
@@ -419,7 +443,7 @@ const Preview = () => {
                         contentEditable
                         suppressContentEditableWarning
                       >
-                        Projects
+                        {titles[language].projects}
                       </h2>
                       {resumeData.projects.map((item, index) => (
                         <Draggable
@@ -445,7 +469,7 @@ const Preview = () => {
                                   id={`work-experience-start-end-date`}
                                 />
                               </div>
-                             
+
                               <Link
                                 href={item.link}
                                 target="_blank"
@@ -480,11 +504,11 @@ const Preview = () => {
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}
                                                 className={`
-                                          hover:outline-dashed hover:outline-2 hover:outline-gray-400
-                                          ${
-                                            snapshot.isDragging &&
-                                            "outline-dashed outline-2 outline-gray-400 bg-white"
-                                          }`}
+                                                  hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                                  ${
+                                                    snapshot.isDragging &&
+                                                    "outline-dashed outline-2 outline-gray-400 bg-white"
+                                                  }`}
                                               >
                                                 <div
                                                   dangerouslySetInnerHTML={{
@@ -501,9 +525,7 @@ const Preview = () => {
                                 )}
                               </Droppable>
                             </div>
-                            
                           )}
-                          
                         </Draggable>
                       ))}
                       {provided.placeholder}
@@ -512,7 +534,6 @@ const Preview = () => {
                 </Droppable>
               )}
             </div>
-            
           </div>
         </DragDropContext>
       </A4PageWrapper>
@@ -536,7 +557,5 @@ const A4PageWrapper = ({ children }) => {
     </div>
   );
 };
-
-
 
 export default Preview;

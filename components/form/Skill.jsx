@@ -1,15 +1,32 @@
 import React, { useContext } from "react";
 import { ResumeContext } from "../../pages/builder";
 import FormButton from "./FormButton";
+// [ADICIONADO] Importar contexto de idioma
+import { useLanguage } from "../../context/LanguageContext";
 
 const Skill = ({ title }) => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
+  // [ADICIONADO] Acessar idioma selecionado
+  const { language } = useLanguage();
+
+  // [ADICIONADO] Mapeamento para exibir títulos traduzidos sem alterar DefaultResumeData.jsx
+  const translationMap = {
+    en: {
+      "Technical Skills": "Technical Skills",
+      "Soft Skills": "Soft Skills",
+      "Additional Skills": "Additional Skills"
+    },
+    pt: {
+      "Technical Skills": "Habilidades Técnicas",
+      "Soft Skills": "Habilidades Interpessoais",
+      "Additional Skills": "Habilidades Adicionais"
+    }
+  };
 
   // skills
   const handleSkill = (e, index, title) => {
     const newSkills = [
-      ...resumeData.skills.find((skillType) => skillType.title === title)
-        .skills,
+      ...resumeData.skills.find((skillType) => skillType.title === title).skills,
     ];
     newSkills[index] = e.target.value;
     setResumeData((prevData) => ({
@@ -36,7 +53,7 @@ const Skill = ({ title }) => {
     });
   };
 
-  const removeSkill = (title, index) => {
+  const removeSkill = (title) => {
     setResumeData((prevData) => {
       const skillType = prevData.skills.find(
         (skillType) => skillType.title === title
@@ -59,12 +76,16 @@ const Skill = ({ title }) => {
 
   return (
     <div className="flex-col-gap-2">
-      <h2 className="input-title">{title}</h2>
+      {/* [ALTERADO] Exibir título traduzido caso exista, senão exibir valor original */}
+      <h2 className="input-title">
+        {translationMap[language][title] || title}
+      </h2>
       {skillType.skills.map((skill, index) => (
         <div key={index} className="f-col">
+          {/* [ALTERADO] Mesmo placeholder traduzido */}
           <input
             type="text"
-            placeholder={title}
+            placeholder={translationMap[language][title] || title}
             name={title}
             className="w-full other-input"
             value={skill}

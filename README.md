@@ -1,105 +1,104 @@
-# ATSResume
+# ATSResume (Versão Traduzida)
 
-A cutting-edge resume builder that helps job seekers create a professional, ATS-friendly resume in minutes. Our platform uses the latest technology to analyze and optimize your resume for maximum visibility and success with applicant tracking systems. Say goodbye to frustration and wasted time spent on manual resume formatting. Create your winning resume with ATSResume today and get noticed by employers.
+Uma versão traduzida do ATSResume, um construtor de currículo de última geração que ajuda candidatos a emprego a criar currículos profissionais e compatíveis com sistemas de rastreamento de candidatos (ATS) em minutos. Essa tradução visa tornar a plataforma acessível para falantes de língua portuguesa, mantendo as funcionalidades inovadoras do projeto original.
 
 ## Demo
 
 #### [https://atsresume.vercel.app/](https://atsresume.vercel.app/)
 ![image](https://user-images.githubusercontent.com/61316762/218017511-fbbaa7da-6154-449f-9e46-8de45b0e6c29.png)
 
-### Resume Score
+### Pontuação do Currículo
 #### https://www.resumego.net/resume-checker/
 ![image](https://user-images.githubusercontent.com/61316762/218143206-f0e5e764-52bc-4c25-84f2-6b2fff00cd4b.png)
 
-## Change Log
+## Alterações nesta Versão
 
-- Drag and drop sections to reorder them in the resume(Work Experience, Projects, Skills)
+- Tradução completa para o português.
 
-## Sections
+## Funcionalidades
 
-- [Personal Information](#personal-information)
-- [Social Media](#social-media)
-- [Summary](#summary)
-- [Education](#education)
-- [Work Experience](#work-experience)
-- [Projects](#projects)
-- [Technical Skills](#technical-skills)
-- [Soft Skills](#soft-skills)
-- [Languages](#languages)
-- [Additional Skills](#additional-skills)
-- [Certifications](#certifications)
+- **Reorganize seções**: Arraste e solte para reorganizar as seções do currículo (Experiência Profissional, Projetos, Competências).
 
-## Personal Information
+## Seções do Currículo
 
-- Name
+- [Informações Pessoais](#informações-pessoais)
+- [Redes Sociais](#redes-sociais)
+- [Resumo](#resumo)
+- [Educação](#educação)
+- [Experiência Profissional](#experiência-profissional)
+- [Projetos](#projetos)
+- [Habilidades Técnicas](#habilidades-técnicas)
+- [Habilidades Interpessoais](#habilidades-interpessoais)
+- [Idiomas](#idiomas)
+- [Habilidades Adicionais](#habilidades-adicionais)
+- [Certificações](#certificações)
+
+## Informações Pessoais
+
+- Nome
 - Email
-- Phone
-- Address
-- Profile Picture
+- Telefone
+- Endereço
+- Foto de Perfil
 
-## Social Media
+## Redes Sociais
 
-- Social Media Links
+- Links para Redes Sociais
 
-## Summary
+## Resumo
 
-- Summary
+- Resumo Profissional
 
-## Education
+## Educação
 
-- Degree
-- Institute
-- Start Date
-- End Date
+- Grau
+- Instituição
+- Data de Início
+- Data de Conclusão
 
-## Work Experience
+## Experiência Profissional
 
-- Company
-- Designation
-- Description
-- Key Achievements
-- Start Date
-- End Date
+- Empresa
+- Cargo
+- Descrição (opcional)
+- Principais Conquistas
+- Data de Início
+- Data de Conclusão
 
-Description optional
+## Projetos
 
-## Projects
+- Nome do Projeto
+- Descrição (opcional)
+- Principais Conquistas
+- Data de Início
+- Data de Conclusão
 
-- Project Name
-- Description
-- key Achievements
-- Start Date
-- End Date
+## Habilidades Técnicas
 
-Description optional
+- Competências Técnicas
 
-## Technical Skills
+## Habilidades Interpessoais
 
-- Technical Skills
+- Competências Interpessoais
 
-## Soft Skills
+## Idiomas
 
-- Soft Skills
+- Idiomas
 
-## Languages
+## Habilidades Adicionais
 
-- Languages
+- Outras Habilidades
 
-## Additional Skills
+## Certificações
 
-- Additional Skills
+- Certificações
 
-## Certifications
+## Como Adicionar Conquistas
 
-- Certifications
+Conquistas são a parte mais importante do seu currículo. 
 
-## How to Add Key Achievements
-
-Key achievements are the most important part of your resume. 
-
-- Add key achievements to your resume to make it more attractive and increase your chances of getting noticed by employers.
-- Add key achievements to your work experience and projects.
-- Add key achievements to your resume by clicking on the new line.
+- Adicione conquistas às suas experiências profissionais e projetos para torná-los mais atrativos e aumentar suas chances de ser notado por empregadores.
+- Insira conquistas clicando em uma nova linha na respectiva seção.
 
 ## PageSpeed Insights
 
@@ -107,16 +106,16 @@ Key achievements are the most important part of your resume.
 
 ![image](https://user-images.githubusercontent.com/61316762/218244267-c46f5d02-b742-4b4c-ba7e-ae1bfb1e04d4.png)
 
-## License
+## Licença
 
-[MIT](https://github.com/sauravhathi/atsresume/blob/main/LICENSE.md)
+Este projeto é licenciado sob a [MIT License](https://github.com/sauravhathi/atsresume/blob/main/LICENSE.md).
 
-## Contributing
+## Baseado no Projeto Original
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Este é um fork do projeto [ATSResume](https://github.com/sauravhathi/atsresume), criado por [Saurav Hathi](https://github.com/sauravhathi). Todos os créditos pelo desenvolvimento inicial e conceito pertencem ao autor original. Eu somente adicionei tradução em português brasileiro.
 
-Please make sure to update tests as appropriate.
+## Contribuindo
 
-## Authors and acknowledgment
+Pull requests são bem-vindos. Para mudanças significativas, por favor, abra uma issue primeiro para discutir o que você gostaria de alterar.
 
-- [Saurav Hathi](https://github.com/sauravhathi)
+Certifique-se de atualizar os testes conforme necessário.
